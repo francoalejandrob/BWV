@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { InstagramIcon, WhatsAppIcon, RulerIcon } from "./Icons";
 import { openSizeGuide } from "./SizeGuideModal";
 import { whatsappLink } from "@/data/products";
@@ -12,12 +13,16 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
         <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
           <div>
-            <p className="font-display text-lg font-black tracking-[0.2em] text-ink">
-              BWV<span className="align-super text-[0.55em]">™</span>
-            </p>
+            <Image
+              src="/brand/logo-wordmark.png"
+              alt="Born With Vision"
+              width={398}
+              height={38}
+              className="h-4 w-auto"
+            />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-muted">
-              Born With Vision. Ropa personalizada, oversize fit.
-              Salinas, Ecuador.
+              Ropa personalizada, oversize fit. Salinas, Ecuador — desde
+              2026.
             </p>
           </div>
 
@@ -35,6 +40,11 @@ export default function Footer() {
                 <li>
                   <a href="#rebels" className="transition-colors duration-200 hover:text-ink">
                     Rebels
+                  </a>
+                </li>
+                <li>
+                  <a href="#nosotros" className="transition-colors duration-200 hover:text-ink">
+                    Nosotros
                   </a>
                 </li>
               </ul>

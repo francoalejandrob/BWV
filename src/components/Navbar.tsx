@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { InstagramIcon, MenuIcon, CloseIcon, WhatsAppIcon, RulerIcon } from "./Icons";
 import { openSizeGuide } from "./SizeGuideModal";
 import { whatsappLink } from "@/data/products";
@@ -9,6 +10,7 @@ import { whatsappLink } from "@/data/products";
 const NAV_LINKS = [
   { href: "#originals", label: "Originals" },
   { href: "#rebels", label: "Rebels" },
+  { href: "#nosotros", label: "Nosotros" },
   { href: "#contacto", label: "Contacto" },
 ];
 
@@ -41,11 +43,15 @@ export default function Navbar() {
             : "border-transparent bg-transparent"
         }`}
       >
-        <Link
-          href="#top"
-          className="font-display text-sm font-black tracking-[0.2em] text-ink"
-        >
-          BWV<span className="align-super text-[0.55em]">™</span>
+        <Link href="#top" aria-label="BWV — Born With Vision, inicio" className="shrink-0">
+          <Image
+            src="/brand/logo-wordmark.png"
+            alt="Born With Vision"
+            width={398}
+            height={38}
+            preload
+            className="h-3.5 w-auto sm:h-4"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CollectionSection from "@/components/CollectionSection";
 import WhatsAppSection from "@/components/WhatsAppSection";
+import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import SizeGuideModal from "@/components/SizeGuideModal";
 import { productsByCollection } from "@/data/products";
@@ -32,6 +33,7 @@ export default function Home() {
           products={rebels}
         />
         <WhatsAppSection />
+        <AboutSection />
       </main>
       <Footer />
       <SizeGuideModal />

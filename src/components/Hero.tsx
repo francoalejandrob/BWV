@@ -25,7 +25,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-40 sm:px-8 sm:pb-20 lg:pb-24">
         <p className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.35em] text-ink-muted">
-          Salinas, Ecuador · Est. 2001
+          Salinas, Ecuador · Est. 2026
         </p>
         <h1 className="font-display font-black uppercase leading-[0.88] tracking-tight text-ink text-balance text-[clamp(2.8rem,11vw,8.5rem)]">
           Born
