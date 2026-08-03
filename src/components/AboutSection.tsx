@@ -14,11 +14,11 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-surface lg:order-1">
             <Image
-              src="/brand/sobre-nosotros.jpg"
+              src="/brand/sobre-nosotros.png"
               alt="Clienta BWV con camiseta oversize de print trasero"
               fill
               sizes="(max-width: 1024px) 92vw, 45vw"
-              className="object-cover"
+              className="object-cover object-[62%_center]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pt-16">
               <Image

@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { InstagramIcon, MenuIcon, CloseIcon, WhatsAppIcon, RulerIcon } from "./Icons";
+import { InstagramIcon, MenuIcon, CloseIcon, WhatsAppIcon, RulerIcon, BagIcon } from "./Icons";
 import { openSizeGuide } from "./SizeGuideModal";
 import { whatsappLink } from "@/data/products";
+import { useCart } from "@/context/CartContext";
 
 const NAV_LINKS = [
   { href: "#originals", label: "Originals" },
@@ -17,6 +18,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { count, openCart } = useCart();
 
   useEffect(() => {
     function onScroll() {
@@ -95,15 +97,31 @@ export default function Navbar() {
           </a>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          aria-expanded={open}
-          className="flex cursor-pointer items-center justify-center rounded-full p-2 text-ink md:hidden"
-        >
-          {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label={`Abrir carrito${count > 0 ? ` (${count} productos)` : ""}`}
+            className="relative flex cursor-pointer items-center justify-center rounded-full p-2 text-ink transition-colors duration-200 hover:text-ink-muted"
+          >
+            <BagIcon className="h-5 w-5" />
+            {count > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-whatsapp px-1 font-display text-[0.6rem] font-bold leading-none text-whatsapp-ink">
+                {count}
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            className="flex cursor-pointer items-center justify-center rounded-full p-2 text-ink md:hidden"
+          >
+            {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {open && (

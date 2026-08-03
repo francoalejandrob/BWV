@@ -52,3 +52,60 @@ export function RulerIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+export function BagIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={className} aria-hidden="true">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6.5 8h11l.9 12.1a1.5 1.5 0 0 1-1.5 1.6H7.1a1.5 1.5 0 0 1-1.5-1.6L6.5 8Z"
+      />
+      <path strokeLinecap="round" d="M9 8V6.5a3 3 0 0 1 6 0V8" />
+    </svg>
+  );
+}
+
+export function PlusIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
+      <path d="M12 5v14M5 12h14" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function MinusIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
+      <path d="M5 12h14" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function TrashIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className} aria-hidden="true">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 7h16M9.5 7V5.5A1.5 1.5 0 0 1 11 4h2a1.5 1.5 0 0 1 1.5 1.5V7m-8 0 .7 12a2 2 0 0 0 2 1.9h3.6a2 2 0 0 0 2-1.9L18 7"
+      />
+    </svg>
+  );
+}
+
+export function SparkleIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M11.05 2.6a1 1 0 0 1 1.9 0l1.36 4.03a5 5 0 0 0 3.06 3.06l4.03 1.36a1 1 0 0 1 0 1.9l-4.03 1.36a5 5 0 0 0-3.06 3.06l-1.36 4.03a1 1 0 0 1-1.9 0l-1.36-4.03a5 5 0 0 0-3.06-3.06l-4.03-1.36a1 1 0 0 1 0-1.9l4.03-1.36a5 5 0 0 0 3.06-3.06L11.05 2.6Z" />
+    </svg>
+  );
+}
+
+export function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      <path d="m5 12.5 4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

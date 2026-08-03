@@ -1,13 +1,29 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import type { Product } from "@/data/products";
 import { whatsappLink } from "@/data/products";
-import { ArrowUpRight } from "./Icons";
+import { useCart, type Size } from "@/context/CartContext";
+import { ArrowUpRight, BagIcon, CheckIcon } from "./Icons";
+
+const SIZES: Size[] = ["S", "M", "L"];
 
 export default function ProductCard({ product }: { product: Product }) {
   const [primary, secondary] = product.images;
+  const [size, setSize] = useState<Size>("M");
+  const [justAdded, setJustAdded] = useState(false);
+  const { addItem } = useCart();
+
   const message = `Hola BWV! Me interesa la ${product.name}${
     product.collection === "originals" ? " (Originals)" : " (Rebels)"
   }. ¿Está disponible?`;
+
+  function handleAddToCart() {
+    addItem(product, size);
+    setJustAdded(true);
+    window.setTimeout(() => setJustAdded(false), 1600);
+  }
 
   return (
     <article className="group">
@@ -48,11 +64,55 @@ export default function ProductCard({ product }: { product: Product }) {
         </p>
       </div>
 
+      <div className="mt-4 flex items-center gap-2">
+        <span className="text-xs font-medium text-ink-faint">Talla</span>
+        <div className="flex gap-1.5">
+          {SIZES.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setSize(s)}
+              aria-pressed={size === s}
+              aria-label={`Talla ${s}`}
+              className={`flex h-7 w-7 cursor-pointer items-center justify-center rounded-full font-display text-xs font-bold transition-colors duration-200 ${
+                size === s
+                  ? "bg-ink text-bg"
+                  : "border border-border text-ink-muted hover:border-ink/50 hover:text-ink"
+              }`}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={handleAddToCart}
+        className={`mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.1em] transition-all duration-200 ${
+          justAdded
+            ? "bg-whatsapp text-whatsapp-ink"
+            : "bg-ink text-bg hover:scale-[1.02]"
+        }`}
+      >
+        {justAdded ? (
+          <>
+            <CheckIcon className="h-4 w-4" />
+            Agregado al carrito
+          </>
+        ) : (
+          <>
+            <BagIcon className="h-4 w-4" />
+            Agregar al carrito
+          </>
+        )}
+      </button>
+
       <a
         href={whatsappLink(message)}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex cursor-pointer items-center gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition-colors duration-200 hover:text-ink"
+        className="mt-3 inline-flex cursor-pointer items-center gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition-colors duration-200 hover:text-ink"
       >
         Consultar disponibilidad
         <ArrowUpRight className="h-3.5 w-3.5" />

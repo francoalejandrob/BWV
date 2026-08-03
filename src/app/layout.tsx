@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -49,7 +50,7 @@ export default function RootLayout({
       className={`${archivo.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-ink font-sans">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
