@@ -102,6 +102,19 @@ export function SparkleIcon({ className }: { className?: string }) {
   );
 }
 
+export function ShieldCheckIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className} aria-hidden="true">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3.5 5.5 6v5.2c0 4.6 2.9 7.8 6.5 9.1 3.6-1.3 6.5-4.5 6.5-9.1V6L12 3.5Z"
+      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="m9 12.2 2.1 2.1 3.9-4.3" />
+    </svg>
+  );
+}
+
 export function CheckIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">

@@ -7,20 +7,21 @@ export default function Hero() {
       className="relative flex min-h-[100svh] w-full items-end overflow-hidden bg-bg"
     >
       <Image
-        src="/products/rebel/vision-1.jpg"
-        alt="Modelo de espaldas con camiseta negra BWV Rebels, diseño Vision"
+        src="/brand/banner.png"
+        alt="Dos personas de espaldas con camisetas oversize de print trasero en Times Square, de noche"
         fill
         preload
         sizes="100vw"
-        className="object-cover object-[65%_center] sm:object-center"
+        className="object-cover object-[56%_55%]"
+      />
+      <div aria-hidden className="absolute inset-0 bg-black/40" />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-t from-bg via-bg/80 to-bg/25"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-bg/10"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-bg/60 via-transparent to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-bg/70 via-transparent to-transparent"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-40 sm:px-8 sm:pb-20 lg:pb-24">

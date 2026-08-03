@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CollectionSection from "@/components/CollectionSection";
 import CustomDesignSection from "@/components/CustomDesignSection";
-import WhatsAppSection from "@/components/WhatsAppSection";
+import ShippingTrustSection from "@/components/ShippingTrustSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import SizeGuideModal from "@/components/SizeGuideModal";
@@ -35,7 +35,7 @@ export default function Home() {
           products={rebels}
         />
         <CustomDesignSection />
-        <WhatsAppSection />
+        <ShippingTrustSection />
         <AboutSection />
       </main>
       <Footer />

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Originals y Rebels. Diseños propios, oversize fit. Made for you, not for everyone.",
     url: siteUrl,
     siteName: "BWV™",
-    images: ["/products/rebel/vision-1.jpg"],
+    images: ["/brand/banner.png"],
     locale: "es_EC",
     type: "website",
   },
