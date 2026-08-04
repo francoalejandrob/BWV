@@ -17,11 +17,11 @@ export default function CollectionSection({
   products: Product[];
 }) {
   return (
-    <section id={id} className="scroll-mt-24 border-t border-border py-20 sm:py-28">
+    <section id={id} className="scroll-mt-24 border-t border-border py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mb-12 flex flex-col gap-4 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-8 flex flex-col gap-4 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-3 flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.3em] text-ink-faint">
+            <p className="mb-2.5 flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.25em] text-ink-faint sm:mb-3 sm:tracking-[0.3em]">
               <span>{index}</span>
               <span className="h-px w-8 bg-ink-faint" />
               {eyebrow}
@@ -35,7 +35,7 @@ export default function CollectionSection({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3">
           {products.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}

@@ -40,7 +40,7 @@ export default function SizeGuideModal() {
           type="button"
           onClick={close}
           aria-label="Cerrar guía de tallas"
-          className="cursor-pointer rounded-full p-2 text-ink-muted transition-colors duration-200 hover:bg-surface-2 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          className="-mr-2 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-ink-muted transition-colors duration-200 hover:bg-surface-2 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           <CloseIcon className="h-5 w-5" />
         </button>
@@ -65,7 +65,37 @@ export default function SizeGuideModal() {
           </div>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-border">
+        {/* Mobile: stacked cards, no horizontal scroll needed */}
+        <div className="grid grid-cols-1 gap-3 sm:hidden">
+          {rows.map((row) => (
+            <div key={row.talla} className="rounded-xl border border-border p-4">
+              <p className="font-display text-sm font-bold text-ink">
+                Talla {row.talla}
+              </p>
+              <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
+                <div>
+                  <p className="text-xs text-ink-faint">A · Largo</p>
+                  <p className="text-ink-muted">{row.a} cm</p>
+                </div>
+                <div>
+                  <p className="text-xs text-ink-faint">B · Pecho</p>
+                  <p className="text-ink-muted">{row.b} cm</p>
+                </div>
+                <div>
+                  <p className="text-xs text-ink-faint">C · Hombro</p>
+                  <p className="text-ink-muted">{row.c} cm</p>
+                </div>
+                <div>
+                  <p className="text-xs text-ink-faint">D · Manga</p>
+                  <p className="text-ink-muted">{row.d} cm</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tablet and up: full table */}
+        <div className="hidden overflow-x-auto rounded-xl border border-border sm:block">
           <table className="w-full min-w-[26rem] border-collapse text-sm">
             <thead>
               <tr className="bg-surface-2 text-left text-xs uppercase tracking-wider text-ink-muted">

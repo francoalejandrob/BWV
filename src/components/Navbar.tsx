@@ -97,16 +97,16 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center">
           <button
             type="button"
             onClick={openCart}
             aria-label={`Abrir carrito${count > 0 ? ` (${count} productos)` : ""}`}
-            className="relative flex cursor-pointer items-center justify-center rounded-full p-2 text-ink transition-colors duration-200 hover:text-ink-muted"
+            className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-ink transition-colors duration-200 hover:text-ink-muted"
           >
             <BagIcon className="h-5 w-5" />
             {count > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-whatsapp px-1 font-display text-[0.6rem] font-bold leading-none text-whatsapp-ink">
+              <span className="absolute right-1 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-whatsapp px-1 font-display text-[0.6rem] font-bold leading-none text-whatsapp-ink">
                 {count}
               </span>
             )}
@@ -117,7 +117,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
-            className="flex cursor-pointer items-center justify-center rounded-full p-2 text-ink md:hidden"
+            className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-ink md:hidden"
           >
             {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
           </button>

@@ -64,9 +64,9 @@ export default function ProductCard({ product }: { product: Product }) {
         </p>
       </div>
 
-      <div className="mt-4 flex items-center gap-2">
+      <div className="mt-4 flex items-center gap-3">
         <span className="text-xs font-medium text-ink-faint">Talla</span>
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           {SIZES.map((s) => (
             <button
               key={s}
@@ -74,7 +74,7 @@ export default function ProductCard({ product }: { product: Product }) {
               onClick={() => setSize(s)}
               aria-pressed={size === s}
               aria-label={`Talla ${s}`}
-              className={`flex h-7 w-7 cursor-pointer items-center justify-center rounded-full font-display text-xs font-bold transition-colors duration-200 ${
+              className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full font-display text-xs font-bold transition-colors duration-200 ${
                 size === s
                   ? "bg-ink text-bg"
                   : "border border-border text-ink-muted hover:border-ink/50 hover:text-ink"
@@ -89,7 +89,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <button
         type="button"
         onClick={handleAddToCart}
-        className={`mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.1em] transition-all duration-200 ${
+        className={`mt-4 flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.1em] transition-all duration-200 ${
           justAdded
             ? "bg-whatsapp text-whatsapp-ink"
             : "bg-ink text-bg hover:scale-[1.02]"
@@ -112,7 +112,7 @@ export default function ProductCard({ product }: { product: Product }) {
         href={whatsappLink(message)}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 inline-flex cursor-pointer items-center gap-1.5 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition-colors duration-200 hover:text-ink"
+        className="mt-2 inline-flex cursor-pointer items-center gap-1.5 py-1.5 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition-colors duration-200 hover:text-ink"
       >
         Consultar disponibilidad
         <ArrowUpRight className="h-3.5 w-3.5" />

@@ -9,9 +9,9 @@ const STATS = [
 
 export default function AboutSection() {
   return (
-    <section id="nosotros" className="scroll-mt-24 border-t border-border py-20 sm:py-28">
+    <section id="nosotros" className="scroll-mt-24 border-t border-border py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-20">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-surface lg:order-1">
             <Image
               src="/brand/sobre-nosotros.png"
@@ -43,7 +43,7 @@ export default function AboutSection() {
               Vestimos con propósito.
             </h2>
 
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-ink-muted sm:mt-6">
               BWV™ nació en Salinas, Ecuador, en 2026, de la idea de que la
               ropa debería sentirse tan personal como quien la usa. Diseñamos
               cada pieza nosotros mismos y trabajamos también camisetas
@@ -53,10 +53,10 @@ export default function AboutSection() {
               se hace pensando en quien la va a llevar puesta.
             </p>
 
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
+            <div className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-7 sm:mt-10 sm:gap-6 sm:pt-8">
               {STATS.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-display text-2xl font-black text-ink sm:text-3xl">
+                  <p className="font-display text-xl font-black text-ink sm:text-3xl">
                     {stat.value}
                   </p>
                   <p className="mt-1.5 text-xs leading-snug text-ink-faint">
@@ -70,7 +70,7 @@ export default function AboutSection() {
               href="https://www.instagram.com/born.with.vision/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-flex cursor-pointer items-center gap-2 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition-colors duration-200 hover:text-ink"
+              className="mt-8 inline-flex cursor-pointer items-center gap-2 py-2 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted transition-colors duration-200 hover:text-ink sm:mt-10"
             >
               <InstagramIcon className="h-4 w-4" />
               Síguenos @born.with.vision

@@ -10,8 +10,8 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border bg-bg">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
-        <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
+        <div className="flex flex-col gap-8 sm:flex-row sm:justify-between sm:gap-10">
           <div>
             <Image
               src="/brand/logo-wordmark.png"
@@ -59,7 +59,7 @@ export default function Footer() {
                   <button
                     type="button"
                     onClick={openSizeGuide}
-                    className="flex cursor-pointer items-center gap-1.5 text-left transition-colors duration-200 hover:text-ink"
+                    className="-my-1 flex cursor-pointer items-center gap-1.5 py-1 text-left transition-colors duration-200 hover:text-ink"
                   >
                     <RulerIcon className="h-3.5 w-3.5" />
                     Guía de tallas
@@ -99,7 +99,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="BWV en Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink-muted transition-colors duration-200 hover:border-ink hover:text-ink"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink-muted transition-colors duration-200 hover:border-ink hover:text-ink"
               >
                 <InstagramIcon className="h-4.5 w-4.5" />
               </a>
@@ -108,7 +108,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Escribir por WhatsApp"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink-muted transition-colors duration-200 hover:border-ink hover:text-ink"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink-muted transition-colors duration-200 hover:border-ink hover:text-ink"
               >
                 <WhatsAppIcon className="h-4.5 w-4.5" />
               </a>

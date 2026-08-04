@@ -61,7 +61,7 @@ export default function CartDrawer() {
             type="button"
             onClick={closeCart}
             aria-label="Cerrar carrito"
-            className="cursor-pointer rounded-full p-2 text-ink-muted transition-colors duration-200 hover:bg-surface-2 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            className="-mr-2 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-ink-muted transition-colors duration-200 hover:bg-surface-2 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
           >
             <CloseIcon className="h-5 w-5" />
           </button>
@@ -81,7 +81,7 @@ export default function CartDrawer() {
             <button
               type="button"
               onClick={closeCart}
-              className="mt-2 cursor-pointer rounded-full border border-ink/40 px-5 py-2.5 font-display text-xs font-bold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
+              className="mt-2 min-h-11 cursor-pointer rounded-full border border-ink/40 px-5 py-2.5 font-display text-xs font-bold uppercase tracking-[0.1em] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink/5"
             >
               Seguir viendo
             </button>
@@ -118,19 +118,19 @@ export default function CartDrawer() {
                         type="button"
                         onClick={() => removeItem(item.key)}
                         aria-label={`Quitar ${item.name} del carrito`}
-                        className="cursor-pointer p-1 text-ink-faint transition-colors duration-200 hover:text-ink"
+                        className="-mr-2 -mt-1.5 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-ink-faint transition-colors duration-200 hover:text-ink"
                       >
                         <TrashIcon className="h-4 w-4" />
                       </button>
                     </div>
 
                     <div className="mt-2 flex items-center justify-between">
-                      <div className="flex items-center gap-2 rounded-full border border-border">
+                      <div className="flex items-center rounded-full border border-border">
                         <button
                           type="button"
                           onClick={() => setQty(item.key, item.qty - 1)}
                           aria-label="Reducir cantidad"
-                          className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-ink-muted transition-colors duration-200 hover:text-ink"
+                          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-ink-muted transition-colors duration-200 hover:text-ink"
                         >
                           <MinusIcon className="h-3.5 w-3.5" />
                         </button>
@@ -141,7 +141,7 @@ export default function CartDrawer() {
                           type="button"
                           onClick={() => setQty(item.key, item.qty + 1)}
                           aria-label="Aumentar cantidad"
-                          className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-ink-muted transition-colors duration-200 hover:text-ink"
+                          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-ink-muted transition-colors duration-200 hover:text-ink"
                         >
                           <PlusIcon className="h-3.5 w-3.5" />
                         </button>
@@ -170,7 +170,7 @@ export default function CartDrawer() {
                 href={whatsappLink(buildOrderMessage(items, subtotal))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-5 py-3.5 font-display text-sm font-bold uppercase tracking-[0.1em] text-whatsapp-ink transition-transform duration-200 hover:scale-[1.02]"
+                className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-5 py-3.5 font-display text-sm font-bold uppercase tracking-[0.1em] text-whatsapp-ink transition-transform duration-200 hover:scale-[1.02]"
               >
                 <WhatsAppIcon className="h-4.5 w-4.5" />
                 Finalizar pedido por WhatsApp
@@ -179,7 +179,7 @@ export default function CartDrawer() {
               <button
                 type="button"
                 onClick={clear}
-                className="mt-3 w-full cursor-pointer text-center text-xs font-medium text-ink-faint transition-colors duration-200 hover:text-ink-muted"
+                className="mt-1 w-full cursor-pointer py-2 text-center text-xs font-medium text-ink-faint transition-colors duration-200 hover:text-ink-muted"
               >
                 Vaciar carrito
               </button>
