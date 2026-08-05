@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { InstagramIcon, WhatsAppIcon, RulerIcon } from "./Icons";
 import { openSizeGuide } from "./SizeGuideModal";
-import { whatsappLink } from "@/data/products";
+import { whatsappLink } from "@/lib/whatsapp";
 
 export default function Footer() {
   const year = new Date().getFullYear();

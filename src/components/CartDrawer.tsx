@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useCart, type CartItem } from "@/context/CartContext";
-import { whatsappLink } from "@/data/products";
+import { whatsappLink } from "@/lib/whatsapp";
 import { BagIcon, CloseIcon, MinusIcon, PlusIcon, TrashIcon, WhatsAppIcon, ArrowUpRight } from "./Icons";
 
 function buildOrderMessage(items: CartItem[], subtotal: number) {

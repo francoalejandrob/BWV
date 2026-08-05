@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { whatsappLink } from "@/data/products";
+import { whatsappLink } from "@/lib/whatsapp";
 import { ShieldCheckIcon } from "./Icons";
 
 export default function ShippingTrustSection() {

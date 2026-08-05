@@ -1,4 +1,4 @@
-import type { Product } from "@/data/products";
+import type { UiProduct } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
 
 export default function CollectionSection({
@@ -14,7 +14,7 @@ export default function CollectionSection({
   eyebrow: string;
   title: string;
   description: string;
-  products: Product[];
+  products: UiProduct[];
 }) {
   return (
     <section id={id} className="scroll-mt-24 border-t border-border py-14 sm:py-28">

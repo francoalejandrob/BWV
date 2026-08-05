@@ -1,4 +1,4 @@
-import { whatsappLink } from "@/data/products";
+import { whatsappLink } from "@/lib/whatsapp";
 import { SparkleIcon, ArrowUpRight } from "./Icons";
 
 const MESSAGE =

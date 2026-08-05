@@ -1,26 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
-import type { Product } from "@/data/products";
-import { whatsappLink } from "@/data/products";
-import { useCart, type Size } from "@/context/CartContext";
+import { whatsappLink } from "@/lib/whatsapp";
+import { useCart } from "@/context/CartContext";
+import type { UiProduct } from "@/lib/catalog";
 import { ArrowUpRight, BagIcon, CheckIcon } from "./Icons";
 
-const SIZES: Size[] = ["S", "M", "L"];
-
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product }: { product: UiProduct }) {
   const [primary, secondary] = product.images;
-  const [size, setSize] = useState<Size>("M");
   const [justAdded, setJustAdded] = useState(false);
   const { addItem } = useCart();
 
-  const message = `Hola BWV! Me interesa la ${product.name}${
-    product.collection === "originals" ? " (Originals)" : " (Rebels)"
-  }. ¿Está disponible?`;
+  const availableSizes = useMemo(() => {
+    const seen = new Map<string, (typeof product.variants)[number]>();
+    for (const variant of product.variants) {
+      if (!seen.has(variant.size)) seen.set(variant.size, variant);
+    }
+    return Array.from(seen.values());
+  }, [product.variants]);
+
+  const [size, setSize] = useState(
+    () => availableSizes.find((v) => v.stock > 0)?.size ?? availableSizes[0]?.size ?? ""
+  );
+
+  const selectedVariant = availableSizes.find((v) => v.size === size);
+  const isSoldOut = availableSizes.length === 0 || !selectedVariant || selectedVariant.stock <= 0;
+  const color = product.variants[0]?.color;
+
+  const message = `Hola BWV! Me interesa la ${product.name} (${product.collectionName}). ¿Está disponible?`;
 
   function handleAddToCart() {
-    addItem(product, size);
+    if (isSoldOut) return;
+    addItem(
+      {
+        slug: product.slug,
+        name: product.name,
+        collectionName: product.collectionName,
+        price: product.price,
+        images: product.images,
+      },
+      size
+    );
     setJustAdded(true);
     window.setTimeout(() => setJustAdded(false), 1600);
   }
@@ -28,13 +49,15 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group">
       <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-surface">
-        <Image
-          src={primary}
-          alt={`Camiseta ${product.name} — BWV, print de espalda`}
-          fill
-          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 30vw"
-          className="object-cover transition-opacity duration-500 ease-out group-hover:opacity-0"
-        />
+        {primary && (
+          <Image
+            src={primary}
+            alt={`Camiseta ${product.name} — BWV, print de espalda`}
+            fill
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 30vw"
+            className="object-cover transition-opacity duration-500 ease-out group-hover:opacity-0"
+          />
+        )}
         {secondary && (
           <Image
             src={secondary}
@@ -45,9 +68,16 @@ export default function ProductCard({ product }: { product: Product }) {
             className="object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
           />
         )}
-        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/40 px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-ink backdrop-blur-sm">
-          {product.color}
-        </span>
+        {color && (
+          <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/40 px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-ink backdrop-blur-sm">
+            {color}
+          </span>
+        )}
+        {isSoldOut && (
+          <span className="absolute right-3 top-3 rounded-full border border-white/15 bg-black/60 px-3 py-1 font-display text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-ink backdrop-blur-sm">
+            Agotado
+          </span>
+        )}
       </div>
 
       <div className="mt-4 flex items-start justify-between gap-3">
@@ -64,38 +94,44 @@ export default function ProductCard({ product }: { product: Product }) {
         </p>
       </div>
 
-      <div className="mt-4 flex items-center gap-3">
-        <span className="text-xs font-medium text-ink-faint">Talla</span>
-        <div className="flex gap-2">
-          {SIZES.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setSize(s)}
-              aria-pressed={size === s}
-              aria-label={`Talla ${s}`}
-              className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full font-display text-xs font-bold transition-colors duration-200 ${
-                size === s
-                  ? "bg-ink text-bg"
-                  : "border border-border text-ink-muted hover:border-ink/50 hover:text-ink"
-              }`}
-            >
-              {s}
-            </button>
-          ))}
+      {availableSizes.length > 0 && (
+        <div className="mt-4 flex items-center gap-3">
+          <span className="text-xs font-medium text-ink-faint">Talla</span>
+          <div className="flex flex-wrap gap-2">
+            {availableSizes.map((v) => (
+              <button
+                key={v.size}
+                type="button"
+                onClick={() => setSize(v.size)}
+                disabled={v.stock <= 0}
+                aria-pressed={size === v.size}
+                aria-label={v.stock <= 0 ? `Talla ${v.size} agotada` : `Talla ${v.size}`}
+                className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full font-display text-xs font-bold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-40 ${
+                  size === v.size
+                    ? "bg-ink text-bg"
+                    : "border border-border text-ink-muted hover:border-ink/50 hover:text-ink"
+                }`}
+              >
+                {v.size}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <button
         type="button"
         onClick={handleAddToCart}
-        className={`mt-4 flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.1em] transition-all duration-200 ${
+        disabled={isSoldOut}
+        className={`mt-4 flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-3 font-display text-xs font-bold uppercase tracking-[0.1em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 ${
           justAdded
             ? "bg-whatsapp text-whatsapp-ink"
-            : "bg-ink text-bg hover:scale-[1.02]"
+            : "bg-ink text-bg hover:scale-[1.02] disabled:hover:scale-100"
         }`}
       >
-        {justAdded ? (
+        {isSoldOut ? (
+          "Agotado"
+        ) : justAdded ? (
           <>
             <CheckIcon className="h-4 w-4" />
             Agregado al carrito

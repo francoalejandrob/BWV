@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { InstagramIcon, MenuIcon, CloseIcon, WhatsAppIcon, RulerIcon, BagIcon } from "./Icons";
 import { openSizeGuide } from "./SizeGuideModal";
-import { whatsappLink } from "@/data/products";
+import { whatsappLink } from "@/lib/whatsapp";
 import { useCart } from "@/context/CartContext";
 
 const NAV_LINKS = [

@@ -8,15 +8,21 @@ import {
   useMemo,
   useState,
 } from "react";
-import type { Product } from "@/data/products";
 
-export type Size = "S" | "M" | "L";
+export type Size = string;
+
+export type CartProduct = {
+  slug: string;
+  name: string;
+  collectionName: string;
+  price: number;
+  images: string[];
+};
 
 export type CartItem = {
   key: string;
   slug: string;
   name: string;
-  collection: Product["collection"];
   size: Size;
   price: number;
   image: string;
@@ -30,7 +36,7 @@ type CartContextValue = {
   subtotal: number;
   openCart: () => void;
   closeCart: () => void;
-  addItem: (product: Product, size: Size, qty?: number) => void;
+  addItem: (product: CartProduct, size: Size, qty?: number) => void;
   removeItem: (key: string) => void;
   setQty: (key: string, qty: number) => void;
   clear: () => void;
@@ -60,7 +66,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
 
-  const addItem = useCallback((product: Product, size: Size, qty = 1) => {
+  const addItem = useCallback((product: CartProduct, size: Size, qty = 1) => {
     const key = `${product.slug}-${size}`;
     setItems((prev) => {
       const existing = prev.find((item) => item.key === key);
@@ -75,7 +81,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           key,
           slug: product.slug,
           name: product.name,
-          collection: product.collection,
           size,
           price: product.price,
           image: product.images[0],
