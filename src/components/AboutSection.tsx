@@ -33,7 +33,7 @@ export default function AboutSection() {
 
           <div className="lg:order-2">
             <p className="mb-3 flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.3em] text-ink-faint">
-              <span>03</span>
+              <span>04</span>
               <span className="h-px w-8 bg-ink-faint" />
               Sobre nosotros
             </p>

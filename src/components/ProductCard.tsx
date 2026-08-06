@@ -4,13 +4,15 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import { whatsappLink } from "@/lib/whatsapp";
 import { useCart } from "@/context/CartContext";
+import { useQuickView } from "@/context/QuickViewContext";
 import type { UiProduct } from "@/lib/catalog";
-import { ArrowUpRight, BagIcon, CheckIcon } from "./Icons";
+import { ArrowUpRight, BagIcon, CheckIcon, ExpandIcon } from "./Icons";
 
 export default function ProductCard({ product }: { product: UiProduct }) {
   const [primary, secondary] = product.images;
   const [justAdded, setJustAdded] = useState(false);
   const { addItem } = useCart();
+  const { open: openQuickView } = useQuickView();
 
   const availableSizes = useMemo(() => {
     const seen = new Map<string, (typeof product.variants)[number]>();
@@ -48,7 +50,12 @@ export default function ProductCard({ product }: { product: UiProduct }) {
 
   return (
     <article className="group">
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-surface">
+      <button
+        type="button"
+        onClick={() => openQuickView(product)}
+        aria-label={`Vista rápida de ${product.name}`}
+        className="relative block aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-2xl border border-border bg-surface"
+      >
         {primary && (
           <Image
             src={primary}
@@ -78,7 +85,15 @@ export default function ProductCard({ product }: { product: UiProduct }) {
             Agotado
           </span>
         )}
-      </div>
+
+        <span
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/70 to-transparent py-4 font-display text-xs font-semibold uppercase tracking-[0.12em] text-ink opacity-0 transition-opacity duration-200 sm:group-hover:opacity-100"
+        >
+          <ExpandIcon className="h-3.5 w-3.5" />
+          Vista rápida
+        </span>
+      </button>
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div>

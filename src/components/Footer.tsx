@@ -43,6 +43,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="#galeria" className="transition-colors duration-200 hover:text-ink">
+                    Galería
+                  </a>
+                </li>
+                <li>
                   <a href="#nosotros" className="transition-colors duration-200 hover:text-ink">
                     Nosotros
                   </a>
