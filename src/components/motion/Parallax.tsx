@@ -12,11 +12,16 @@ import {
 export default function Parallax({
   children,
   className,
-  offset = 60,
+  offset = 15,
 }: {
   children: ReactNode;
   className?: string;
-  /** Vertical drift in px across the element's scroll range. */
+  /**
+   * Vertical drift as a percentage of the element's own height, across its
+   * full pass through the viewport. Pair with a matching scale (buffer >=
+   * offset on each edge) on the wrapped element so the drift never reveals
+   * an edge — see usage sites.
+   */
   offset?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,7 +33,7 @@ export default function Parallax({
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [-offset, offset]);
-  const transform = useMotionTemplate`translateY(${y}px)`;
+  const transform = useMotionTemplate`translateY(${y}%)`;
 
   return (
     <motion.div

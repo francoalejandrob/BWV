@@ -10,14 +10,14 @@ export default function ShippingTrustSection() {
       id="contacto"
       className="relative scroll-mt-24 overflow-hidden border-t border-border py-14 sm:py-28"
     >
-      <Parallax className="absolute inset-0" offset={30}>
+      <Parallax className="absolute inset-0" offset={10}>
         <Image
           src="/products/rebel/vision-2.jpg"
           alt=""
           aria-hidden="true"
           fill
           sizes="100vw"
-          className="scale-110 object-cover object-top opacity-30 blur-2xl"
+          className="scale-[1.25] object-cover object-top opacity-30 blur-2xl"
         />
       </Parallax>
       <div aria-hidden className="absolute inset-0 bg-bg/80" />

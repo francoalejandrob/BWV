@@ -38,7 +38,7 @@ export default function CollectionSection({
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3">
           {products.map((product, i) => (
-            <Reveal key={product.slug} delay={Math.min(i, 5) * 0.06}>
+            <Reveal key={product.slug} delay={Math.min(i, 5) * 0.08}>
               <ProductCard product={product} />
             </Reveal>
           ))}
