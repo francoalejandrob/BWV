@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Parallax from "./motion/Parallax";
+import Enter from "./motion/Enter";
 import { ArrowUpRight } from "./Icons";
 
 export default function Hero() {
@@ -29,12 +30,25 @@ export default function Hero() {
       />
 
       <div className="relative z-10 flex flex-1 items-center justify-center px-6 pt-24 sm:pt-20">
-        <h1 className="w-full max-w-3xl text-center font-display font-black uppercase leading-tight tracking-tight text-ink text-balance text-[clamp(1.75rem,6.5vw,5rem)]">
-          Born With Vision
-        </h1>
+        <Enter fromY={-32} spring className="mx-auto w-full max-w-3xl">
+          <h1 className="flex justify-center">
+            <Image
+              src="/brand/logo-mark.png"
+              alt="Born With Vision"
+              width={405}
+              height={45}
+              priority
+              className="h-auto w-full max-w-[240px] sm:max-w-[420px] md:max-w-[520px]"
+            />
+          </h1>
+        </Enter>
       </div>
 
-      <div className="relative z-10 flex items-end justify-between gap-6 px-5 pb-10 sm:px-8 sm:pb-14">
+      <Enter
+        fromY={24}
+        delay={0.35}
+        className="relative z-10 flex items-end justify-between gap-6 px-5 pb-10 sm:px-8 sm:pb-14"
+      >
         <p className="font-display text-xs font-semibold uppercase tracking-[0.3em] text-ink-muted sm:tracking-[0.35em]">
           Salinas, Ecuador
           <br />
@@ -47,7 +61,7 @@ export default function Hero() {
           Ver catálogo
           <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
-      </div>
+      </Enter>
     </section>
   );
 }
