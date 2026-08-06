@@ -25,11 +25,9 @@ export default function Hero() {
         className="absolute inset-0 bg-gradient-to-b from-bg/40 via-transparent to-transparent"
       />
 
-      <div className="relative z-10 flex flex-1 items-center justify-center px-4 pt-24 sm:pt-20">
-        <h1 className="w-full max-w-6xl text-center font-display font-black uppercase leading-[0.86] tracking-tight text-ink text-balance text-[clamp(3.2rem,16vw,11.5rem)]">
-          Born With
-          <br />
-          Vision
+      <div className="relative z-10 flex flex-1 items-center justify-center px-6 pt-24 sm:pt-20">
+        <h1 className="w-full max-w-3xl text-center font-display font-black uppercase leading-tight tracking-tight text-ink text-balance text-[clamp(1.75rem,6.5vw,5rem)]">
+          Born With Vision
         </h1>
       </div>
 
