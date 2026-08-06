@@ -1,5 +1,6 @@
 import type { UiProduct } from "@/lib/catalog";
 import ProductCard from "./ProductCard";
+import Reveal from "./motion/Reveal";
 
 export default function CollectionSection({
   id,
@@ -19,7 +20,7 @@ export default function CollectionSection({
   return (
     <section id={id} className="scroll-mt-24 border-t border-border py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mb-8 flex flex-col gap-4 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
+        <Reveal className="mb-8 flex flex-col gap-4 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="mb-2.5 flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.25em] text-ink-faint sm:mb-3 sm:tracking-[0.3em]">
               <span>{index}</span>
@@ -33,11 +34,13 @@ export default function CollectionSection({
           <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
             {description}
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3">
-          {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+          {products.map((product, i) => (
+            <Reveal key={product.slug} delay={Math.min(i, 5) * 0.06}>
+              <ProductCard product={product} />
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { whatsappLink } from "@/lib/whatsapp";
+import Reveal from "./motion/Reveal";
 import { SparkleIcon, ArrowUpRight } from "./Icons";
 
 const MESSAGE =
@@ -8,7 +9,7 @@ export default function CustomDesignSection() {
   return (
     <section className="border-t border-border py-12 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-dashed border-ink/25 bg-surface px-5 py-11 text-center sm:px-12 sm:py-20">
+        <Reveal className="relative overflow-hidden rounded-3xl border border-dashed border-ink/25 bg-surface px-5 py-11 text-center sm:px-12 sm:py-20">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-[0.07]"
@@ -47,7 +48,7 @@ export default function CustomDesignSection() {
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

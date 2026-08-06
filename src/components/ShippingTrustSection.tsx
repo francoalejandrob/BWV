@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { whatsappLink } from "@/lib/whatsapp";
+import Parallax from "./motion/Parallax";
+import Reveal from "./motion/Reveal";
 import { ShieldCheckIcon } from "./Icons";
 
 export default function ShippingTrustSection() {
@@ -8,17 +10,19 @@ export default function ShippingTrustSection() {
       id="contacto"
       className="relative scroll-mt-24 overflow-hidden border-t border-border py-14 sm:py-28"
     >
-      <Image
-        src="/products/rebel/vision-2.jpg"
-        alt=""
-        aria-hidden="true"
-        fill
-        sizes="100vw"
-        className="object-cover object-top opacity-30 blur-2xl scale-110"
-      />
+      <Parallax className="absolute inset-0" offset={30}>
+        <Image
+          src="/products/rebel/vision-2.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="scale-110 object-cover object-top opacity-30 blur-2xl"
+        />
+      </Parallax>
       <div aria-hidden className="absolute inset-0 bg-bg/80" />
 
-      <div className="relative mx-auto flex max-w-2xl flex-col items-center px-5 text-center sm:px-8">
+      <Reveal className="relative mx-auto flex max-w-2xl flex-col items-center px-5 text-center sm:px-8">
         <span className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 bg-surface text-ink sm:h-12 sm:w-12">
           <ShieldCheckIcon className="h-5 w-5" />
         </span>
@@ -45,7 +49,7 @@ export default function ShippingTrustSection() {
         >
           ¿Dudas sobre tu envío? Escríbenos
         </a>
-      </div>
+      </Reveal>
     </section>
   );
 }

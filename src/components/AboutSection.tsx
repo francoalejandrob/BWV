@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Parallax from "./motion/Parallax";
+import Reveal from "./motion/Reveal";
 import { ArrowUpRight, InstagramIcon } from "./Icons";
 
 const STATS = [
@@ -13,13 +15,15 @@ export default function AboutSection() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-20">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-surface lg:order-1">
-            <Image
-              src="/brand/sobre-nosotros.png"
-              alt="Clienta BWV con camiseta oversize de print trasero"
-              fill
-              sizes="(max-width: 1024px) 92vw, 45vw"
-              className="object-cover object-[62%_center]"
-            />
+            <Parallax className="absolute inset-0" offset={40}>
+              <Image
+                src="/brand/sobre-nosotros.png"
+                alt="Clienta BWV con camiseta oversize de print trasero"
+                fill
+                sizes="(max-width: 1024px) 92vw, 45vw"
+                className="scale-110 object-cover object-[62%_center]"
+              />
+            </Parallax>
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pt-16">
               <Image
                 src="/brand/logo-wordmark.png"
@@ -31,7 +35,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="lg:order-2">
+          <Reveal className="lg:order-2">
             <p className="mb-3 flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.3em] text-ink-faint">
               <span>04</span>
               <span className="h-px w-8 bg-ink-faint" />
@@ -76,7 +80,7 @@ export default function AboutSection() {
               Síguenos @born.with.vision
               <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

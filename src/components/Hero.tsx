@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Parallax from "./motion/Parallax";
 import { ArrowUpRight } from "./Icons";
 
 export default function Hero() {
@@ -7,14 +8,16 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-bg"
     >
-      <Image
-        src="/brand/banner.png"
-        alt="Dos personas de espaldas con camisetas oversize de print trasero en Times Square, de noche"
-        fill
-        preload
-        sizes="100vw"
-        className="object-cover object-[56%_55%]"
-      />
+      <Parallax className="absolute inset-0" offset={80}>
+        <Image
+          src="/brand/banner.png"
+          alt="Dos personas de espaldas con camisetas oversize de print trasero en Times Square, de noche"
+          fill
+          preload
+          sizes="100vw"
+          className="scale-110 object-cover object-[56%_55%]"
+        />
+      </Parallax>
       <div aria-hidden className="absolute inset-0 bg-black/40" />
       <div
         aria-hidden
