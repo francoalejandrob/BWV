@@ -33,12 +33,12 @@ export default function Hero() {
         <Enter fromY={-32} spring className="mx-auto w-full max-w-3xl">
           <h1 className="flex justify-center">
             <Image
-              src="/brand/logo-mark.png"
+              src="/brand/logo-mark-2.png"
               alt="Born With Vision"
-              width={405}
-              height={45}
+              width={1024}
+              height={527}
               priority
-              className="h-auto w-full max-w-[240px] sm:max-w-[420px] md:max-w-[520px]"
+              className="h-auto w-full max-w-[280px] sm:max-w-[440px] md:max-w-[560px]"
             />
           </h1>
         </Enter>
